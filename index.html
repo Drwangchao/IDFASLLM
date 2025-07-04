@@ -121,13 +121,68 @@
   </div>
 </section>
 
-
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/1.png" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/2.jpg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/3.jpg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+        </h2>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
 
 
 
 <section class="section hero">
   <div class="hero-body">
     <div class="container is-max-desktop content">
+      <h2 class="title">Get Started</h2>
+      
+      <!-- Virtual Environment Setup -->
+      <p><strong>🛠 Set up Virtual Environment</strong></p>
+
+      <!-- venv commands for Python virtual environment -->
+      <p>For a Python virtual environment using <code>venv</code> (Linux/macOS):</p>
+      <pre><code>python3 -m venv ./venv                 # [optional] create virtual environment
+source ./venv/bin/activate             # [optional] activate virtual environment</code></pre>
+
+      <!-- Conda commands for Conda virtual environment -->
+      <p>For a Conda virtual environment:</p>
+      <pre><code>conda create --name myenv python=3.9
+conda activate myenv                  # Activate the Conda environment</code></pre>
+
+      <!-- Install dependencies -->
+      <p><strong>🔧 Install dependencies</strong></p>
+      <pre><code>pip install -r requirements.txt </code></pre>
+
+      <!-- Set the OpenAI API key -->
+      <p><strong>🔑 Set the OpenAI API key</strong></p>
+      <p>For Linux/macOS, use the following command in your terminal:</p>
+      <pre><code>export OPENAI_API_KEY=xxxxxxxxxx  # Replace xxxxxxxxxx with your actual API key</code></pre>
+      <p>For Windows, use the following command in Command Prompt:</p>
+      <pre><code>set OPENAI_API_KEY=xxxxxxxxxx  # Replace xxxxxxxxxx with your actual API key</code></pre>
+
+      <!-- Run the application -->
+      <p><strong>🚀 Run the application</strong></p>
+      <pre><code>python main.py</code></pre>
       
 
     <h2>📝 Details</h2>
