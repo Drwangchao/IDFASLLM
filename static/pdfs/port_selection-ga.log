@@ -1,0 +1,605 @@
+[2025-06-05 20:29:53,088][root][INFO] - Workspace: /home/mrdu/桌面/process/reevo-main/outputs/port_selection-ga/2025-06-05_20-29-53
+[2025-06-05 20:29:53,089][root][INFO] - Project Root: /home/mrdu/桌面/process/reevo-main
+[2025-06-05 20:29:53,089][root][INFO] - Using LLM: deepseek-reasoner
+[2025-06-05 20:29:53,089][root][INFO] - Using Algorithm: reevo
+[2025-06-05 20:29:53,246][root][INFO] - Problem: port_selection
+[2025-06-05 20:29:53,246][root][INFO] - Problem description: Write a crossover function for solving the port selection optimization problem using a genetic algorithm. The problem requires selecting a subset of ports from a given set of ports to serve users, with the goal of minimizing the transmission power. The encoding uses binary encoding, where the number of binary bits equals the number of ports, and a bit value of 1 represents the selection of that port.The solution generated after the crossover must be valid.
+[2025-06-05 20:29:53,246][root][INFO] - Function name: crossover
+[2025-06-05 20:29:53,246][root][INFO] - Evaluating seed function...
+[2025-06-05 20:29:53,246][root][INFO] - Seed function code: 
+import numpy as np
+def crossover_v2(parents: np.ndarray, n_pop: int) -> np.ndarray:
+    n_parents, n_decap = parents.shape
+
+    # Split genomes into two halves
+    left_halves = parents[:, :n_decap // 2]
+    right_halves = parents[:, n_decap // 2:]
+
+    # Create parent pairs
+    parents_idx = np.stack([np.random.choice(range(n_parents), 2, replace=False) for _ in range(n_pop)])
+    parents_left = left_halves[parents_idx[:, 0]]
+    parents_right = right_halves[parents_idx[:, 1]]
+
+    # Create offspring
+    offspring = np.concatenate([parents_left, parents_right], axis=1)
+    return offspring
+[2025-06-05 20:29:53,246][root][INFO] - Iteration 0: Running Code 0
+[2025-06-05 20:29:54,422][root][INFO] - Iteration 0: Code Run 0 successful!
+[2025-06-05 20:50:03,331][root][INFO] - Iteration 0, response_id 0: Objective value: 2.519856397580342
+[2025-06-05 20:50:03,332][root][INFO] - Iteration 0: Elitist: 2.519856397580342
+[2025-06-05 20:50:03,332][root][INFO] - Iteration 0 finished...
+[2025-06-05 20:50:03,332][root][INFO] - Best obj: 2.519856397580342, Best Code Path: problem_iter0_code0.py
+[2025-06-05 20:50:03,332][root][INFO] - Function Evals: 1
+[2025-06-05 20:50:03,332][root][INFO] - Initial Population Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a crossover function for Write a crossover function for solving the port selection optimization problem using a genetic algorithm. The problem requires selecting a subset of ports from a given set of ports to serve users, with the goal of minimizing the transmission power. The encoding uses binary encoding, where the number of binary bits equals the number of ports, and a bit value of 1 represents the selection of that port.The solution generated after the crossover must be valid.
+The `crossover` function takes as input a 2D NumPy array parents and an integer n_pop. The function performs a genetic crossover operation on parents to generate n_pop offspring. Use vectorized implementation if possible.
+
+def crossover_v1(parents: np.ndarray, n_pop: int) -> np.ndarray:
+    n_parents, n_decap = parents.shape
+
+    # Split genomes into two halves
+    left_halves = parents[:, :n_decap // 2]
+    right_halves = parents[:, n_decap // 2:]
+
+    # Create parent pairs
+    parents_idx = np.stack([np.random.choice(range(n_parents), 2, replace=False) for _ in range(n_pop)])
+    parents_left = left_halves[parents_idx[:, 0]]
+    parents_right = right_halves[parents_idx[:, 1]]
+
+    # Create offspring
+    offspring = np.concatenate([parents_left, parents_right], axis=1)
+    return offspring
+
+Refer to the format of a trivial design above. Be very creative and give `crossover_v2`. Output code only and enclose your code with Python code block: ```python ... ```.
+
+
+[2025-06-05 20:50:03,639][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:03,714][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:03,881][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:03,882][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:03,948][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:03,978][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:04,222][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:04,223][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:04,309][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:50:04,380][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 20:57:26,846][root][INFO] - Iteration 1: Running Code 0
+[2025-06-05 20:57:27,913][root][INFO] - Iteration 1: Code Run 0 successful!
+[2025-06-05 20:57:27,913][root][INFO] - Iteration 1: Running Code 1
+[2025-06-05 20:57:28,882][root][INFO] - Iteration 1: Code Run 1 successful!
+[2025-06-05 20:57:28,883][root][INFO] - Iteration 1: Running Code 2
+[2025-06-05 20:57:29,913][root][INFO] - Iteration 1: Code Run 2 successful!
+[2025-06-05 20:57:29,913][root][INFO] - Iteration 1: Running Code 3
+[2025-06-05 20:57:30,991][root][INFO] - Iteration 1: Code Run 3 successful!
+[2025-06-05 20:57:30,991][root][INFO] - Iteration 1: Running Code 4
+[2025-06-05 20:57:32,173][root][INFO] - Iteration 1: Code Run 4 successful!
+[2025-06-05 20:57:32,173][root][INFO] - Iteration 1: Running Code 5
+[2025-06-05 20:57:33,437][root][INFO] - Iteration 1: Code Run 5 successful!
+[2025-06-05 20:57:33,437][root][INFO] - Iteration 1: Running Code 6
+[2025-06-05 20:57:34,846][root][INFO] - Iteration 1: Code Run 6 successful!
+[2025-06-05 20:57:34,846][root][INFO] - Iteration 1: Running Code 7
+[2025-06-05 20:57:36,314][root][INFO] - Iteration 1: Code Run 7 successful!
+[2025-06-05 20:57:36,314][root][INFO] - Iteration 1: Running Code 8
+[2025-06-05 20:57:37,687][root][INFO] - Iteration 1: Code Run 8 successful!
+[2025-06-05 20:57:37,687][root][INFO] - Iteration 1: Running Code 9
+[2025-06-05 20:57:39,125][root][INFO] - Iteration 1: Code Run 9 successful!
+[2025-06-05 21:25:24,547][root][INFO] - Iteration 1, response_id 0: Objective value: 2.1442304719135192
+[2025-06-05 21:25:24,547][root][INFO] - Iteration 1, response_id 1: Objective value: 2.0813953487480177
+[2025-06-05 21:25:32,725][root][INFO] - Iteration 1, response_id 2: Objective value: 2.115801836308454
+[2025-06-05 21:25:51,567][root][INFO] - Iteration 1, response_id 3: Objective value: 2.4886358394759025
+[2025-06-05 21:25:51,567][root][INFO] - Iteration 1, response_id 4: Objective value: 2.115801836308454
+[2025-06-05 21:25:51,567][root][INFO] - Iteration 1, response_id 5: Objective value: 2.41397665854402
+[2025-06-05 21:25:53,168][root][INFO] - Iteration 1, response_id 6: Objective value: 2.4873303064145897
+[2025-06-05 21:25:53,168][root][INFO] - Iteration 1, response_id 7: Objective value: 2.2554274671961316
+[2025-06-05 21:25:53,169][root][INFO] - Iteration 1, response_id 8: Objective value: 2.1441907501875814
+[2025-06-05 21:25:53,170][root][INFO] - Iteration 1, response_id 9: Objective value: 2.115801836308454
+[2025-06-05 21:25:53,170][root][INFO] - Iteration 1: Elitist: 2.0813953487480177
+[2025-06-05 21:25:53,170][root][INFO] - Iteration 1 finished...
+[2025-06-05 21:25:53,171][root][INFO] - Best obj: 2.0813953487480177, Best Code Path: problem_iter1_code1.py
+[2025-06-05 21:25:53,171][root][INFO] - Function Evals: 11
+[2025-06-05 21:25:53,172][root][INFO] - Short-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below are two crossover functions for Write a crossover function for solving the port selection optimization problem using a genetic algorithm. The problem requires selecting a subset of ports from a given set of ports to serve users, with the goal of minimizing the transmission power. The encoding uses binary encoding, where the number of binary bits equals the number of ports, and a bit value of 1 represents the selection of that port.The solution generated after the crossover must be valid.
+The `crossover` function takes as input a 2D NumPy array parents and an integer n_pop. The function performs a genetic crossover operation on parents to generate n_pop offspring. Use vectorized implementation if possible.
+
+You are provided with two code versions below, where the second version performs better than the first one.
+
+[Worse code]
+
+    n_parents, n_decap = parents.shape
+    # Randomly select distinct parent pairs for each offspring
+    parent_indices = np.array([np.random.choice(n_parents, size=2, replace=False) for _ in range(n_pop)])
+    parent1 = parents[parent_indices[:, 0]]
+    parent2 = parents[parent_indices[:, 1]]
+    
+    # Generate two random crossover points for each offspring
+    cross_points = np.random.randint(0, n_decap, size=(n_pop, 2))
+    cross_points.sort(axis=1)
+    
+    # Create mask for parent2 segments using broadcasting
+    idx = np.arange(n_decap)
+    mask = (idx >= cross_points[:, 0, None]) & (idx < cross_points[:, 1, None])
+    
+    # Combine genetic material using mask
+    offspring = np.where(mask, parent2, parent1)
+    return offspring
+
+[Better code]
+
+    n_parents, n_decap = parents.shape
+    
+    # Handle insufficient parents by duplicating if necessary
+    if n_parents == 0:
+        return np.zeros((n_pop, n_decap), dtype=parents.dtype)
+    elif n_parents == 1:
+        parents = np.tile(parents, (2, 1))
+        n_parents = 2
+    
+    # Generate parent indices for each offspring (two distinct parents per offspring)
+    parent_indices = np.array([np.random.choice(n_parents, 2, replace=False) for _ in range(n_pop)])
+    parent1_indices = parent_indices[:, 0]
+    parent2_indices = parent_indices[:, 1]
+    
+    # Generate two random crossover points for each offspring and sort them
+    points = np.random.randint(0, n_decap + 1, size=(n_pop, 2))
+    points.sort(axis=1)
+    
+    # Create mask for the middle segment between crossover points
+    col_indices = np.arange(n_decap)
+    mask = (col_indices >= points[:, 0, None]) & (col_indices < points[:, 1, None])
+    
+    # Construct offspring: start with parent1 and replace middle segment with parent2
+    offspring = parents[parent1_indices, :].copy()
+    offspring[mask] = parents[parent2_indices, :][mask]
+    
+    return offspring
+
+You respond with some hints for designing better heuristics, based on the two code versions and using less than 20 words.
+[2025-06-05 21:25:53,354][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:25:53,391][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:25:53,584][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:25:53,629][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:26:03,675][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:26:03,680][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:26:03,683][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:26:03,685][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:26:03,691][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:26:03,724][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:04,727][root][INFO] - Crossover Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a crossover function for Write a crossover function for solving the port selection optimization problem using a genetic algorithm. The problem requires selecting a subset of ports from a given set of ports to serve users, with the goal of minimizing the transmission power. The encoding uses binary encoding, where the number of binary bits equals the number of ports, and a bit value of 1 represents the selection of that port.The solution generated after the crossover must be valid.
+The `crossover` function takes as input a 2D NumPy array parents and an integer n_pop. The function performs a genetic crossover operation on parents to generate n_pop offspring. Use vectorized implementation if possible.
+
+
+[Worse code]
+def crossover_v0(parents: np.ndarray, n_pop: int) -> np.ndarray:
+
+    n_parents, n_decap = parents.shape
+    # Randomly select distinct parent pairs for each offspring
+    parent_indices = np.array([np.random.choice(n_parents, size=2, replace=False) for _ in range(n_pop)])
+    parent1 = parents[parent_indices[:, 0]]
+    parent2 = parents[parent_indices[:, 1]]
+    
+    # Generate two random crossover points for each offspring
+    cross_points = np.random.randint(0, n_decap, size=(n_pop, 2))
+    cross_points.sort(axis=1)
+    
+    # Create mask for parent2 segments using broadcasting
+    idx = np.arange(n_decap)
+    mask = (idx >= cross_points[:, 0, None]) & (idx < cross_points[:, 1, None])
+    
+    # Combine genetic material using mask
+    offspring = np.where(mask, parent2, parent1)
+    return offspring
+
+[Better code]
+def crossover_v1(parents: np.ndarray, n_pop: int) -> np.ndarray:
+
+    n_parents, n_decap = parents.shape
+    
+    # Handle insufficient parents by duplicating if necessary
+    if n_parents == 0:
+        return np.zeros((n_pop, n_decap), dtype=parents.dtype)
+    elif n_parents == 1:
+        parents = np.tile(parents, (2, 1))
+        n_parents = 2
+    
+    # Generate parent indices for each offspring (two distinct parents per offspring)
+    parent_indices = np.array([np.random.choice(n_parents, 2, replace=False) for _ in range(n_pop)])
+    parent1_indices = parent_indices[:, 0]
+    parent2_indices = parent_indices[:, 1]
+    
+    # Generate two random crossover points for each offspring and sort them
+    points = np.random.randint(0, n_decap + 1, size=(n_pop, 2))
+    points.sort(axis=1)
+    
+    # Create mask for the middle segment between crossover points
+    col_indices = np.arange(n_decap)
+    mask = (col_indices >= points[:, 0, None]) & (col_indices < points[:, 1, None])
+    
+    # Construct offspring: start with parent1 and replace middle segment with parent2
+    offspring = parents[parent1_indices, :].copy()
+    offspring[mask] = parents[parent2_indices, :][mask]
+    
+    return offspring
+
+[Reflection]
+Here are concise design hints based on the comparison:
+
+1. **Handle edge cases** (0-1 parents)  
+2. **Use direct array copying** instead of `np.where`  
+3. **Ensure crossover boundaries** include end indices (+1)  
+4. **Avoid broadcasting** where direct masking suffices  
+5. **Explicitly manage memory** with `.copy()`  
+
+*(18 words total)*
+
+[Improved code]
+Please write an improved function `crossover_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2025-06-05 21:30:04,814][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:05,119][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:05,198][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:05,228][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:15,336][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:15,337][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:15,340][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:15,355][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:15,657][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:30:16,877][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:33:49,558][root][INFO] - Iteration 2: Running Code 0
+[2025-06-05 21:33:50,517][root][INFO] - Iteration 2: Code Run 0 successful!
+[2025-06-05 21:33:50,517][root][INFO] - Iteration 2: Running Code 1
+[2025-06-05 21:33:51,505][root][INFO] - Iteration 2: Code Run 1 successful!
+[2025-06-05 21:33:51,505][root][INFO] - Iteration 2: Running Code 2
+[2025-06-05 21:33:52,589][root][INFO] - Iteration 2: Code Run 2 successful!
+[2025-06-05 21:33:52,589][root][INFO] - Iteration 2: Running Code 3
+[2025-06-05 21:33:53,710][root][INFO] - Iteration 2: Code Run 3 successful!
+[2025-06-05 21:33:53,710][root][INFO] - Iteration 2: Running Code 4
+[2025-06-05 21:33:54,877][root][INFO] - Iteration 2: Code Run 4 successful!
+[2025-06-05 21:33:54,877][root][INFO] - Iteration 2: Running Code 5
+[2025-06-05 21:33:56,084][root][INFO] - Iteration 2: Code Run 5 successful!
+[2025-06-05 21:33:56,084][root][INFO] - Iteration 2: Running Code 6
+[2025-06-05 21:33:57,285][root][INFO] - Iteration 2: Code Run 6 successful!
+[2025-06-05 21:33:57,285][root][INFO] - Iteration 2: Running Code 7
+[2025-06-05 21:33:58,615][root][INFO] - Iteration 2: Code Run 7 successful!
+[2025-06-05 21:33:58,615][root][INFO] - Iteration 2: Running Code 8
+[2025-06-05 21:33:59,907][root][INFO] - Iteration 2: Code Run 8 successful!
+[2025-06-05 21:33:59,907][root][INFO] - Iteration 2: Running Code 9
+[2025-06-05 21:34:01,308][root][INFO] - Iteration 2: Code Run 9 successful!
+[2025-06-05 21:57:44,592][root][INFO] - Iteration 2, response_id 0: Objective value: 2.115801836308454
+[2025-06-05 21:57:44,592][root][INFO] - Iteration 2, response_id 1: Objective value: inf
+[2025-06-05 21:57:44,592][root][INFO] - Iteration 2, response_id 2: Objective value: 2.0813953487480177
+[2025-06-05 21:57:44,592][root][INFO] - Iteration 2, response_id 3: Objective value: inf
+[2025-06-05 21:57:49,168][root][INFO] - Iteration 2, response_id 4: Objective value: 2.1965164340638963
+[2025-06-05 21:57:49,168][root][INFO] - Iteration 2, response_id 5: Objective value: 2.1441907501875814
+[2025-06-05 21:57:49,168][root][INFO] - Iteration 2, response_id 6: Objective value: inf
+[2025-06-05 21:57:49,168][root][INFO] - Iteration 2, response_id 7: Objective value: inf
+[2025-06-05 21:57:49,168][root][INFO] - Iteration 2, response_id 8: Objective value: 2.0813953487480177
+[2025-06-05 21:57:49,168][root][INFO] - Iteration 2, response_id 9: Objective value: 2.15854991156361
+[2025-06-05 21:57:49,168][root][INFO] - Iteration 2 finished...
+[2025-06-05 21:57:49,168][root][INFO] - Best obj: 2.0813953487480177, Best Code Path: problem_iter1_code1.py
+[2025-06-05 21:57:49,168][root][INFO] - Function Evals: 21
+[2025-06-05 21:57:49,168][root][INFO] - Long-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below is your prior long-term reflection on designing heuristics for Write a crossover function for solving the port selection optimization problem using a genetic algorithm. The problem requires selecting a subset of ports from a given set of ports to serve users, with the goal of minimizing the transmission power. The encoding uses binary encoding, where the number of binary bits equals the number of ports, and a bit value of 1 represents the selection of that port.The solution generated after the crossover must be valid.
+
+
+Below are some newly gained insights.
+Here are concise design hints based on the comparison:
+
+1. **Handle edge cases** (0-1 parents)  
+2. **Use direct array copying** instead of `np.where`  
+3. **Ensure crossover boundaries** include end indices (+1)  
+4. **Avoid broadcasting** where direct masking suffices  
+5. **Explicitly manage memory** with `.copy()`  
+
+*(18 words total)*
+Based on the comparison, here are key hints for better heuristics:
+
+1. **Handle edge cases** (0-1 parents)  
+2. **Avoid explicit tiling** - use broadcasting  
+3. **Ensure distinct parents** per offspring  
+4. **Simplify masking** with direct indexing  
+
+(Total words: 18)
+Here are concise hints for designing better heuristics:
+
+1. **Ensure distinct parents** (when possible) to maintain diversity.  
+2. **Handle edge cases** (e.g., single/no parents).  
+3. **Optimize crossover coverage** to include all genes.  
+4. **Use efficient indexing** for parent selection.  
+5. **Prefer vectorized operations** for scalability.  
+
+*(19 words)*
+Here are key hints for improvement:
+
+1. **Prefer multi-point over uniform crossover** - Maintains contiguous gene blocks better
+2. **Handle edge cases explicitly** - Zero/single-bit genomes need special logic
+3. **Ensure distinct crossover points** - Prevents degenerate offspring
+4. **Use segment-based inheritance** - Preserves parent subsequences
+5. **Vectorize comparisons** - Optimize performance with broadcasting
+
+(19 words)
+Based on the comparison, here are key hints for improving crossover heuristics:
+
+1. **Preserve genetic blocks** - Two-point crossover maintains contiguous gene segments better than uniform crossover  
+2. **Control disruption** - Segment swapping reduces random gene scrambling compared to per-gene mixing  
+3. **Maintain linkage** - Keep related genes together during recombination  
+4. **Avoid excessive randomization** - Limit bit-level randomness to preserve parent structures  
+
+The better code implements these by using segment swapping between two fixed crossover points.
+Based on the comparison, here are concise heuristic design hints (<20 words):
+
+**Preserve contiguous genetic segments**  
+Two-point crossover maintains solution structure better than uniform swapping.
+
+**Control disruption of building blocks**  
+Segmented inheritance reduces destructive randomness in offspring generation.
+
+**Enforce distinct parent diversity**  
+Guaranteed unique parent pairs improve exploration over random pairing.
+Based on the comparison, here are key optimization hints in <20 words:
+
+1. **Handle edge cases first** (single/zero parents)  
+2. **Avoid full argsort** - use direct random choice for parents  
+3. **Optimize memory** - eliminate redundant tiling via broadcasting  
+4. **Simplify masking** - leverage implicit array alignment  
+5. **Prevent duplicate parents** - ensure distinct pairs with replace=False  
+
+Focus on vectorization efficiency and corner case robustness.
+Based on the comparison, here are concise heuristic design hints (<20 words):
+
+1. **Simplify crossover logic**: Avoid complex masking by using contiguous segment replacement (better maintainability)
+   
+2. **Vectorize parent selection**: Replace per-offspring loops with batched argsort operations (improves speed)
+
+3. **Eliminate special cases**: Uniform handling of all genome lengths reduces branching (increases robustness)
+
+4. **Prefer direct assignment**: Use copy-and-modify instead of conditional where (enhances clarity)
+
+5. **Ensure distinct parents**: Use efficient random permutation methods (prevoves selection bias)
+Here are concise design hints based on the comparison:
+
+1. **Avoid uniform crossover** (bitwise randomness preserves less structure)  
+2. **Use distinct parents** (prevoves redundant self-crossover)  
+3. **Implement multi-point crossover** (preserves meaningful gene segments)  
+4. **Ensure segment continuity** (maintains building blocks in solution)  
+5. **Handle edge cases explicitly** (like single-parent populations)  
+
+Key takeaway: Structural preservation > random mixing for this problem.
+Based on the comparison:
+
+**Prefer two-point crossover over uniform. It preserves contiguous building blocks better (15 words).**
+
+Key reasons:
+1. Two-point crossover maintains genetic schema continuity
+2. Distinct parent selection enhances diversity
+3. Edge handling improves robustness
+4. Segment inheritance mimics biological recombination more closely
+
+Write constructive hints for designing better heuristics, based on prior reflections and new insights and using less than 50 words.
+[2025-06-05 21:57:49,924][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:58:28,816][root][INFO] - Mutation Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a crossover function for Write a crossover function for solving the port selection optimization problem using a genetic algorithm. The problem requires selecting a subset of ports from a given set of ports to serve users, with the goal of minimizing the transmission power. The encoding uses binary encoding, where the number of binary bits equals the number of ports, and a bit value of 1 represents the selection of that port.The solution generated after the crossover must be valid.
+The `crossover` function takes as input a 2D NumPy array parents and an integer n_pop. The function performs a genetic crossover operation on parents to generate n_pop offspring. Use vectorized implementation if possible.
+
+
+[Prior reflection]
+Based on prior reflections and new insights, here are concise heuristic design hints (42 words):
+
+**Prefer two-point crossover** to preserve contiguous port blocks and minimize structural disruption.  
+**Enforce distinct parent pairs** maintaining diversity.  
+**Handle edge cases** (0-1 parents) explicitly.  
+**Use vectorized segment copying** instead of per-bit operations.  
+**Simplify with direct array assignment** avoiding complex masking.  
+
+Key focus: Structural preservation > randomization for port selection optimization.
+
+[Code]
+def crossover_v1(parents: np.ndarray, n_pop: int) -> np.ndarray:
+
+    n_parents, n_decap = parents.shape
+    if n_parents == 0:
+        return np.empty((n_pop, n_decap))
+    
+    # Generate parent indices for each offspring
+    idx1 = np.random.randint(0, n_parents, size=n_pop)
+    if n_parents == 1:
+        idx2 = np.zeros(n_pop, dtype=int)
+    else:
+        idx2 = np.random.randint(0, n_parents, size=n_pop)
+        same = idx1 == idx2
+        if np.any(same):
+            offset = np.random.randint(1, n_parents, size=same.sum())
+            idx2[same] = (idx2[same] + offset) % n_parents
+    
+    # Generate two crossover points for each offspring and sort them
+    if n_decap > 0:
+        cross_points = np.random.randint(0, n_decap, size=(n_pop, 2))
+        cross_points.sort(axis=1)
+        # Create mask for the segment between crossover points
+        col_indices = np.arange(n_decap)
+        mask = (col_indices >= cross_points[:, 0, None]) & (col_indices < cross_points[:, 1, None])
+        # Construct offspring using segments from both parents
+        offspring = np.where(mask, parents[idx2], parents[idx1])
+    else:
+        offspring = parents[idx1]
+    
+    return offspring
+
+[Improved code]
+Please write a mutated function `crossover_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2025-06-05 21:58:29,036][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:58:29,097][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:58:29,487][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:58:29,598][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 21:58:29,853][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:05:35,137][root][INFO] - Iteration 3: Running Code 0
+[2025-06-05 22:05:36,053][root][INFO] - Iteration 3: Code Run 0 successful!
+[2025-06-05 22:05:36,053][root][INFO] - Iteration 3: Running Code 1
+[2025-06-05 22:05:37,033][root][INFO] - Iteration 3: Code Run 1 successful!
+[2025-06-05 22:05:37,033][root][INFO] - Iteration 3: Running Code 2
+[2025-06-05 22:05:38,064][root][INFO] - Iteration 3: Code Run 2 successful!
+[2025-06-05 22:05:38,064][root][INFO] - Iteration 3: Running Code 3
+[2025-06-05 22:05:39,175][root][INFO] - Iteration 3: Code Run 3 successful!
+[2025-06-05 22:05:39,175][root][INFO] - Iteration 3: Running Code 4
+[2025-06-05 22:05:40,411][root][INFO] - Iteration 3: Code Run 4 successful!
+[2025-06-05 22:28:20,122][root][INFO] - Iteration 3, response_id 0: Objective value: 2.112080337840278
+[2025-06-05 22:28:22,991][root][INFO] - Iteration 3, response_id 1: Objective value: 2.2181596699907824
+[2025-06-05 22:28:26,610][root][INFO] - Iteration 3, response_id 2: Objective value: 2.0769341523140086
+[2025-06-05 22:28:26,610][root][INFO] - Iteration 3, response_id 3: Objective value: 2.0813953487480177
+[2025-06-05 22:28:26,924][root][INFO] - Iteration 3, response_id 4: Objective value: 2.112080337840278
+[2025-06-05 22:28:26,924][root][INFO] - Iteration 3: Elitist: 2.0769341523140086
+[2025-06-05 22:28:26,925][root][INFO] - Iteration 3 finished...
+[2025-06-05 22:28:26,925][root][INFO] - Best obj: 2.0769341523140086, Best Code Path: problem_iter3_code2.py
+[2025-06-05 22:28:26,925][root][INFO] - Function Evals: 26
+[2025-06-05 22:28:27,134][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:27,290][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:27,487][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:27,635][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:27,667][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:27,876][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:37,850][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:37,854][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:37,861][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:28:37,880][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:33,337][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:33,438][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:33,545][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:33,855][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:33,899][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:33,941][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:44,628][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:44,630][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:44,636][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:32:44,664][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 22:37:02,984][root][INFO] - Iteration 4: Running Code 0
+[2025-06-05 22:37:04,273][root][INFO] - Iteration 4: Code Run 0 successful!
+[2025-06-05 22:37:04,273][root][INFO] - Iteration 4: Running Code 1
+[2025-06-05 22:37:05,365][root][INFO] - Iteration 4: Code Run 1 successful!
+[2025-06-05 22:37:05,365][root][INFO] - Iteration 4: Running Code 2
+[2025-06-05 22:37:06,599][root][INFO] - Iteration 4: Code Run 2 successful!
+[2025-06-05 22:37:06,599][root][INFO] - Iteration 4: Running Code 3
+[2025-06-05 22:37:07,904][root][INFO] - Iteration 4: Code Run 3 successful!
+[2025-06-05 22:37:07,905][root][INFO] - Iteration 4: Running Code 4
+[2025-06-05 22:37:09,313][root][INFO] - Iteration 4: Code Run 4 successful!
+[2025-06-05 22:37:09,313][root][INFO] - Iteration 4: Running Code 5
+[2025-06-05 22:37:10,876][root][INFO] - Iteration 4: Code Run 5 successful!
+[2025-06-05 22:37:10,876][root][INFO] - Iteration 4: Running Code 6
+[2025-06-05 22:37:12,543][root][INFO] - Iteration 4: Code Run 6 successful!
+[2025-06-05 22:37:12,543][root][INFO] - Iteration 4: Running Code 7
+[2025-06-05 22:37:14,090][root][INFO] - Iteration 4: Code Run 7 successful!
+[2025-06-05 22:37:14,090][root][INFO] - Iteration 4: Running Code 8
+[2025-06-05 22:37:15,829][root][INFO] - Iteration 4: Code Run 8 successful!
+[2025-06-05 22:37:15,829][root][INFO] - Iteration 4: Running Code 9
+[2025-06-05 22:37:17,568][root][INFO] - Iteration 4: Code Run 9 successful!
+[2025-06-05 23:06:19,123][root][INFO] - Iteration 4, response_id 0: Objective value: 2.0769341523140086
+[2025-06-05 23:06:19,124][root][INFO] - Iteration 4, response_id 1: Objective value: 2.0813953487480177
+[2025-06-05 23:06:20,740][root][INFO] - Iteration 4, response_id 2: Objective value: 2.0769341523140086
+[2025-06-05 23:06:20,741][root][INFO] - Iteration 4, response_id 3: Objective value: 2.112080337840278
+[2025-06-05 23:06:22,709][root][INFO] - Iteration 4, response_id 4: Objective value: 2.0813953487480177
+[2025-06-05 23:06:24,626][root][INFO] - Iteration 4, response_id 5: Objective value: 2.15854991156361
+[2025-06-05 23:06:24,627][root][INFO] - Iteration 4, response_id 6: Objective value: 2.1441907501875814
+[2025-06-05 23:06:24,627][root][INFO] - Iteration 4, response_id 7: Objective value: 2.0769341523140086
+[2025-06-05 23:06:28,697][root][INFO] - Iteration 4, response_id 8: Objective value: 2.112080337840278
+[2025-06-05 23:06:28,697][root][INFO] - Iteration 4, response_id 9: Objective value: 2.112080337840278
+[2025-06-05 23:06:28,697][root][INFO] - Iteration 4 finished...
+[2025-06-05 23:06:28,697][root][INFO] - Best obj: 2.0769341523140086, Best Code Path: problem_iter3_code2.py
+[2025-06-05 23:06:28,697][root][INFO] - Function Evals: 36
+[2025-06-05 23:06:29,784][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:07:02,208][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:07:02,357][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:07:02,360][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:07:02,752][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:07:14,378][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:12:28,562][root][INFO] - Iteration 5: Running Code 0
+[2025-06-05 23:12:29,604][root][INFO] - Iteration 5: Code Run 0 successful!
+[2025-06-05 23:12:29,604][root][INFO] - Iteration 5: Running Code 1
+[2025-06-05 23:12:30,688][root][INFO] - Iteration 5: Code Run 1 successful!
+[2025-06-05 23:12:30,688][root][INFO] - Iteration 5: Running Code 2
+[2025-06-05 23:12:31,852][root][INFO] - Iteration 5: Code Run 2 successful!
+[2025-06-05 23:12:31,852][root][INFO] - Iteration 5: Running Code 3
+[2025-06-05 23:12:33,117][root][INFO] - Iteration 5: Code Run 3 successful!
+[2025-06-05 23:12:33,117][root][INFO] - Iteration 5: Running Code 4
+[2025-06-05 23:12:34,390][root][INFO] - Iteration 5: Code Run 4 successful!
+[2025-06-05 23:37:36,613][root][INFO] - Iteration 5, response_id 0: Objective value: 2.0769341523140086
+[2025-06-05 23:37:36,614][root][INFO] - Iteration 5, response_id 1: Objective value: 2.0769341523140086
+[2025-06-05 23:37:36,614][root][INFO] - Iteration 5, response_id 2: Objective value: 2.0778377270034887
+[2025-06-05 23:37:36,614][root][INFO] - Iteration 5, response_id 3: Objective value: 2.1522574177056613
+[2025-06-05 23:37:36,614][root][INFO] - Iteration 5, response_id 4: Objective value: 2.1522574177056613
+[2025-06-05 23:37:36,615][root][INFO] - Iteration 5 finished...
+[2025-06-05 23:37:36,615][root][INFO] - Best obj: 2.0769341523140086, Best Code Path: problem_iter3_code2.py
+[2025-06-05 23:37:36,615][root][INFO] - Function Evals: 41
+[2025-06-05 23:37:36,766][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:36,877][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:37,031][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:37,056][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:37,201][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:37,324][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:37,444][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:37,477][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:37,489][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:37:37,711][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:39,421][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:39,919][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:40,035][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:40,099][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:40,158][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:40,159][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:40,208][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:40,228][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:40,235][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:38:40,297][httpx][INFO] - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+[2025-06-05 23:43:41,461][root][INFO] - Iteration 6: Running Code 0
+[2025-06-05 23:43:42,507][root][INFO] - Iteration 6: Code Run 0 successful!
+[2025-06-05 23:43:42,507][root][INFO] - Iteration 6: Running Code 1
+[2025-06-05 23:43:43,540][root][INFO] - Iteration 6: Code Run 1 successful!
+[2025-06-05 23:43:43,541][root][INFO] - Iteration 6: Running Code 2
+[2025-06-05 23:43:44,559][root][INFO] - Iteration 6: Code Run 2 successful!
+[2025-06-05 23:43:44,559][root][INFO] - Iteration 6: Running Code 3
+[2025-06-05 23:43:45,665][root][INFO] - Iteration 6: Code Run 3 successful!
+[2025-06-05 23:43:45,665][root][INFO] - Iteration 6: Running Code 4
+[2025-06-05 23:43:46,853][root][INFO] - Iteration 6: Code Run 4 successful!
+[2025-06-05 23:43:46,853][root][INFO] - Iteration 6: Running Code 5
+[2025-06-05 23:43:48,092][root][INFO] - Iteration 6: Code Run 5 successful!
+[2025-06-05 23:43:48,092][root][INFO] - Iteration 6: Running Code 6
+[2025-06-05 23:43:49,396][root][INFO] - Iteration 6: Code Run 6 successful!
+[2025-06-05 23:43:49,396][root][INFO] - Iteration 6: Running Code 7
+[2025-06-05 23:43:50,800][root][INFO] - Iteration 6: Code Run 7 successful!
+[2025-06-05 23:43:50,800][root][INFO] - Iteration 6: Running Code 8
+[2025-06-05 23:43:52,441][root][INFO] - Iteration 6: Code Run 8 successful!
+[2025-06-05 23:43:52,442][root][INFO] - Iteration 6: Running Code 9
+[2025-06-05 23:43:54,051][root][INFO] - Iteration 6: Code Run 9 successful!
+[2025-06-06 00:13:10,581][root][INFO] - Iteration 6, response_id 0: Objective value: 2.1522574177056613
+[2025-06-06 00:13:18,109][root][INFO] - Iteration 6, response_id 1: Objective value: 2.2541839088973616
+[2025-06-06 00:13:20,728][root][INFO] - Iteration 6, response_id 2: Objective value: 2.0769341523140086
+[2025-06-06 00:13:22,494][root][INFO] - Iteration 6, response_id 3: Objective value: 2.0769341523140086
+[2025-06-06 00:13:23,465][root][INFO] - Iteration 6, response_id 4: Objective value: 2.1522574177056613
+[2025-06-06 00:13:23,466][root][INFO] - Iteration 6, response_id 5: Objective value: 2.0769341523140086
+[2025-06-06 00:13:23,466][root][INFO] - Iteration 6, response_id 6: Objective value: 2.0769341523140086
+[2025-06-06 00:13:23,467][root][INFO] - Iteration 6, response_id 7: Objective value: 2.0769341523140086
+[2025-06-06 00:13:25,133][root][INFO] - Iteration 6, response_id 8: Objective value: 2.112080337840278
+[2025-06-06 00:13:26,549][root][INFO] - Iteration 6, response_id 9: Objective value: 2.0769341523140086
+[2025-06-06 00:13:26,549][root][INFO] - Iteration 6 finished...
+[2025-06-06 00:13:26,549][root][INFO] - Best obj: 2.0769341523140086, Best Code Path: problem_iter3_code2.py
+complete
